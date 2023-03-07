@@ -5,11 +5,14 @@ from imu import IMU
 def main():
     # initialize imu
     imu = IMU()
-    print(imu.debug())
-    # while True:
-    #     z, x = imu.GetAdjustments()
-    #     print(x)
-    #     time.sleep(0.5)
+    DC,servo0 = imu.GetAdjustments()
+    
+    # first set DC, then servos
+    # TODO add detection for sudden large changes to imu, which indicates payload has moved, reset and readjust after that
+    
+    
+    print(DC, servo0)
+
     
 
 
