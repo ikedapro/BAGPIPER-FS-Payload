@@ -5,7 +5,7 @@ import time
 
 import RPi.GPIO as GPIO
 
-class servo0:
+class Servo0:
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(8, GPIO.OUT)
