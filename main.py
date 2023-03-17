@@ -3,6 +3,7 @@ import time
 from imu import IMU
 from servo0 import Servo0
 from camera import Camera
+from radioParser import RadioParser
 
 def main():
     #region initialize components
@@ -10,7 +11,7 @@ def main():
     imu = IMU()
     # TODO initialize servo 0 class (base)
     # TODO initialize DC motor class
-    # TODO initialize radio class
+    commands = RadioParser()
     # TODO initialize servo 1 class (camera)
     cam = Camera()
     #endregion
@@ -36,6 +37,11 @@ def main():
     #region camera commands
     # TODO use radio class to get a list of commands to execute
     # IDEA: use generator to iterate through commands, see yield and generator in python
+    # for cmd in commands.
+    print(commands.cmd_lst)
+    commands.receive()
+    print(commands.cmd_lst)
+    
     # TODO: use servo 1 class to move camera
     # TODO: use camera class to take pictures and do filters
     #endregion
