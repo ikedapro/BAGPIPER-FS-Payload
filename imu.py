@@ -5,11 +5,8 @@ from adafruit_lsm6ds.ism330dhcx import ISM330DHCX
 class IMU:
     def __init__(self):
         self.i2c = board.I2C()
-
         self.sensor = ISM330DHCX(self.i2c)
-        
-    def debug(self):
-        return "success"
+        print("imu initiated")
 
     def GetAdjustments(self):
         '''

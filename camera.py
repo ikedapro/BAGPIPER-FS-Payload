@@ -1,5 +1,8 @@
-from picamera import PiCamera
-from time import sleep
 import os
 
-os.system("libcamera-still -o images/test1.jpg --immediate")
+class Camera:
+    def __init__(self):
+        print("camera initiated")
+        
+    def capture(self, filename):
+        os.system(f"libcamera-still -o images/{filename}.jpg --immediate")

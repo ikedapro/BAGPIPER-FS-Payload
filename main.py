@@ -1,7 +1,8 @@
 # main script that runs upon pi turn on
 import time
 from imu import IMU
-from Servo0 import Servo0
+from servo0 import Servo0
+from camera import Camera
 
 def main():
     #region initialize components
@@ -11,16 +12,18 @@ def main():
     # TODO initialize DC motor class
     # TODO initialize radio class
     # TODO initialize servo 1 class (camera)
+    cam = Camera()
     #endregion
     
     #region tests
     
     # imu test
-    DC,servo_0 = imu.GetAdjustments() #SEE()
+    DC,servo_0 = imu.GetAdjustments()
     print(DC, servo_0)
     # TODO hardware test servo 0
     # TODO hardware test DC motor
     # TODO hardware test servo 1
+    cam.capture("class-test")
     #endregion
     
     # TODO: get servo accelerations and determine if rocket has landed or has moved during payload deployment
