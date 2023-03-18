@@ -2,6 +2,7 @@
 import time
 from imu import IMU
 from servo0 import Servo0
+from servo1 import Servo1
 from camera import Camera
 from radioParser import RadioParser
 
@@ -9,21 +10,20 @@ def main():
     #region initialize components
     # imu
     imu = IMU()
-    # TODO initialize servo 0 class (base)
+    s0 = Servo0()
+    s1 = Servo1()
     # TODO initialize DC motor class
     commands = RadioParser()
-    # TODO initialize servo 1 class (camera)
     cam = Camera()
     #endregion
     
     #region tests
-    
     # imu test
-    DC,servo_0 = imu.GetAdjustments()
-    print(DC, servo_0)
-    # TODO hardware test servo 0
+    theta_DC,theta_0 = imu.GetAdjustments()
+    print(theta_DC, theta_0)
+    # s0.test()
+    s1.test()
     # TODO hardware test DC motor
-    # TODO hardware test servo 1
     cam.capture("class-test")
     #endregion
     
@@ -32,6 +32,7 @@ def main():
     #region deployment
     # TODO: use DC class to make adjustments based on imu
     # TODO: use Servo0 class to make adjustments based on imu
+    s0.rotate(theta_0)
     #endregion
     
     #region camera commands

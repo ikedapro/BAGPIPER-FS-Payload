@@ -2,31 +2,23 @@ from gpiozero import Servo
 # import math
 import time
 from gpiozero.pins.pigpio import PiGPIOFactory
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 import os
 
-
 factory = PiGPIOFactory()
-servo = Servo(24, min_pulse_width=0.5/1000, max_pulse_width=2.5/1000, pin_factory=factory)
-limit_angle = -40
-adjustment_angle = -23
+# servo = Servo(23, min_pulse_width=0.5/1000, max_pulse_width=2.5/1000, pin_factory=factory)
+servo = Servo(23)
 
-class Servo0:
+class Servo1:
     def __init__(self):
         os.system("sudo pigpiod")
         print("servo 0 initiated")
         
         
     def test(self):
-        servo.mid()
-        time.sleep(3)
-        servo.max()
-        time.sleep(3)
-        servo.mid()
-        time.sleep(3)
-        servo.max()
-        time.sleep(3)
-        stop()
+        servo.value = -1
+        time.sleep(1)
+        self.stop()
     
     def rotate(self, degrees):
         '''

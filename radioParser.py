@@ -1,8 +1,6 @@
 import sys
 import time
 
-import payload
-
 class RadioParser():
     received = False
     cmd_lst = []
