@@ -30,3 +30,5 @@ def main():
     bagpiper.rot_motor()
     print("spinning")
     bagpiper.rot_motor()
+    
+main()

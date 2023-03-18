@@ -5,11 +5,10 @@ import time
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(8, GPIO.OUT)
-GPIO.output(8, 1)
-time.sleep(5)
-GPIO.output(8, 0)
-GPIO.cleanup()
+GPIO.setup(24,GPIO.OUT)
+servo1 = GPIO.PWM(24,50)
+servo1.start(0)
+servo1.ChangeDutyCycle(10)
 
 '''
 #servo=Servo(23, pin_factory=factory)
