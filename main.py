@@ -58,7 +58,17 @@ def main():
     #endregion
     
     #???: ability to re-adjust payload if IMU detects payload has shifted?
-
+    
+#When passed string, returns list of functions to run (e.g) ['B2', 'A1']
+def parser(string):
+    matches = []
+    check = {'A1', 'B2', 'C3', 'D4', 'E5', 'F6', 'G7', 'H8'}
+    for i in range(len(string)):
+        if i+1 > len(string):
+            return matches
+        elif str(string[i:i+2]) in check:
+            matches.append(string[i:i+2])
+    return matches
 
 if __name__ == "__main__":
     main()
