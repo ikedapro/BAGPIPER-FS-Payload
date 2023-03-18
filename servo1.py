@@ -1,36 +1,44 @@
+# Author: Josh Huang
+
 from gpiozero import Servo
-# import math
 import time
 from gpiozero.pins.pigpio import PiGPIOFactory
-# import RPi.GPIO as GPIO
 import os
 
 factory = PiGPIOFactory()
-# servo = Servo(23, min_pulse_width=0.5/1000, max_pulse_width=2.5/1000, pin_factory=factory)
-servo = Servo(23)
 
+servo = Servo(24, pin_factory=factory)
+servo.value = None
+
+ccw = .115
+cw = -.1
+t_ratio = .45/90
 class Servo1:
     def __init__(self):
-        os.system("sudo pigpiod")
-        print("servo 0 initiated")
+        print("servo 1 initiated")
         
         
     def test(self):
-        servo.value = -1
-        time.sleep(1)
+        # servo.value = cw
+        # time.sleep(0.5)
+        # servo.value = ccw
+        # time.sleep(0.5)
+        servo.value = ccw
+        time.sleep(0.45)
         self.stop()
     
     def rotate(self, degrees):
         '''
-        Rotates the base servo 0 by a number of degrees
+        Rotates the servo 1 by a number of degrees
         '''
-        # servo.value = -40/90
-        rot = -degrees + adjustment_angle
-        if rot < limit_angle:
-            rot = limit_angle
-        servo.value = rot/90
+        if degrees > 0: #ccw
+            servo.value = ccw
+        else:
+            servo.value = cw
+        time.sleep(t_ratio * abs(degrees))
         self.stop()
        
     def stop(self):
-        time.sleep(0.5)
         servo.value = None
+        time.sleep(1)
+

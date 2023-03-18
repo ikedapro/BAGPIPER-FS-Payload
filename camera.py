@@ -1,3 +1,5 @@
+# Author: Josh Huang
+
 import os
 
 class Camera:

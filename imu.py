@@ -1,3 +1,5 @@
+# Author: Josh Huang
+
 import math
 import board
 from adafruit_lsm6ds.ism330dhcx import ISM330DHCX
